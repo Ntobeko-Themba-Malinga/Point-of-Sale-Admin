@@ -18,6 +18,14 @@ public class Department {
     @OneToMany(cascade = CascadeType.REMOVE)
     private Set<Item> items = new HashSet<>();
 
+    public Department(String name, Set<Item> items) {
+        this.name = name;
+        this.items = items;
+    }
+
+    public Department() {
+    }
+
     public Long getId() {
         return id;
     }

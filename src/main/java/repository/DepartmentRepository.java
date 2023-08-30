@@ -57,7 +57,8 @@ public class DepartmentRepository implements IDepartmentRepository {
     @Override
     public boolean deleteDepartment(Department department) {
         this.entityManager.getTransaction().begin();
-        this.entityManager.remove(department);
+        Department departmentToRemove = this.entityManager.find(Department.class, department.getId());
+        this.entityManager.remove(departmentToRemove);
         this.entityManager.getTransaction().commit();
         return true;
     }
