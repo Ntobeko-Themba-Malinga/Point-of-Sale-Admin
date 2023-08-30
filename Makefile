@@ -1,6 +1,7 @@
 .IGNORE: kill-servers, db
 
 all:
+	make kill-servers
 	make run_unit_test
 
 kill-servers:

@@ -89,7 +89,6 @@ public class DepartmentRepository implements IDepartmentRepository {
         this.entityManager.getTransaction().begin();
         Department departmentToAddItem = find(department);
         departmentToAddItem.getItems().add(item);
-        this.entityManager.persist(departmentToAddItem);
         this.entityManager.getTransaction().commit();
         return true;
     }
@@ -105,7 +104,6 @@ public class DepartmentRepository implements IDepartmentRepository {
         this.entityManager.getTransaction().begin();
         Department departmentToRemoveItem = find(department);
         departmentToRemoveItem.getItems().remove(item);
-        this.entityManager.persist(departmentToRemoveItem);
         this.entityManager.getTransaction().commit();
         return true;
     }

@@ -9,7 +9,7 @@ public class UserRepository implements IUserRepository{
 
 
     public UserRepository() {
-        factory = Persistence.createEntityManagerFactory("User_persi_unit");
+        factory = Persistence.createEntityManagerFactory("pos_pu");
         manager = factory.createEntityManager();
 
     }

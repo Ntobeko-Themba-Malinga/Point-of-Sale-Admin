@@ -1,6 +1,9 @@
 import model.Department;
+import model.Item;
 import repository.DepartmentRepository;
 import repository.IDepartmentRepository;
+import repository.IItemRepository;
+import repository.ItemRepository;
 
 import java.util.List;
 
@@ -9,6 +12,7 @@ public class App {
 
     public static void main(String[] args) {
         IDepartmentRepository departmentRepository = new DepartmentRepository();
+        IItemRepository itemRepository = new ItemRepository();
 
         //Creating
         System.out.println("Saving");
@@ -16,6 +20,14 @@ public class App {
         department.setName("Test");
         departmentRepository.saveDepartment(department);
         System.out.println("Saved1");
+
+        Item item1 = new Item("item one", 10, 10);
+        itemRepository.saveItem(item1);
+        departmentRepository.addItem(department, item1);
+
+        Item item2 = new Item("item two", 5, 4);
+        itemRepository.saveItem(item2);
+        departmentRepository.addItem(department, item2);
 
         Department department2 = new Department();
         department2.setName("Test2");

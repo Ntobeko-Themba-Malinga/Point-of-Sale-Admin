@@ -15,7 +15,7 @@ public class Department {
     @Column(name = "name",nullable = false, unique = true)
     private String name;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.DETACH, targetEntity = Item.class)
     private Set<Item> items = new HashSet<>();
 
     public Department(String name, Set<Item> items) {
