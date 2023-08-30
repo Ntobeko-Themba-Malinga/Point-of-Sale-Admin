@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import model.Department;
+import model.Item;
 import org.junit.jupiter.api.*;
 
 import java.util.HashSet;
@@ -31,6 +32,19 @@ class DepartmentRepositoryTest {
         this.entityManager.persist(department);
         this.entityManager.getTransaction().commit();
         return department;
+    }
+
+    private Item saveItemForTesting(Department department, String name) {
+        Item item = new Item(name, 10, 10);
+        this.entityManager.getTransaction().begin();
+        this.entityManager.persist(item);
+        this.entityManager.getTransaction().commit();
+
+        Department addDepartment = this.entityManager.find(Department.class, department.getId());
+        this.entityManager.getTransaction().begin();
+        addDepartment.getItems().add(item);
+        this.entityManager.getTransaction().commit();
+        return item;
     }
 
     @BeforeEach
@@ -86,5 +100,38 @@ class DepartmentRepositoryTest {
 
         departments = this.entityManager.createQuery("SELECT d FROM Department d").getResultList();
         assertEquals(1, departments.size());
+    }
+
+    @Test
+    public void addItem() {
+        Department department = saveDepartmentForTesting("Test department");
+        Item item = new Item("Item 1", 10, 10);
+        this.entityManager.getTransaction().begin();
+        this.entityManager.persist(item);
+        this.entityManager.getTransaction().commit();
+        this.entityManager.close();
+
+        this.departmentRepository.addItem(department, item);
+        this.entityManager = this.emf.createEntityManager();
+        Department newDepartment = this.entityManager.find(Department.class, department.getId());
+        assertEquals(1, newDepartment.getItems().size());
+    }
+
+    @Test
+    public void removeItem() {
+        Department department = saveDepartmentForTesting("TestDepartment");
+        saveItemForTesting(department, "Test 1");
+        saveItemForTesting(department, "Test 2");
+        Item item = saveItemForTesting(department, "Test 3");
+        department = (Department) this.entityManager.createQuery(
+                "SELECT d FROM Department d WHERE name='TestDepartment'").getSingleResult();
+        assertEquals(3, department.getItems().size());
+        this.entityManager.close();
+
+        this.departmentRepository.removeItem(department, item);
+        this.entityManager = this.emf.createEntityManager();
+        department = (Department) this.entityManager.createQuery(
+                "SELECT d FROM Department d WHERE name='TestDepartment'").getSingleResult();
+        assertEquals(3, department.getItems().size());
     }
 }

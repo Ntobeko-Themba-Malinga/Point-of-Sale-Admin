@@ -1,3 +1,5 @@
+package repository;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -30,7 +32,7 @@ public class UserRespositoryTest {
     @BeforeEach
     public void setUp() {
         this.userRepository = new UserRepository();
-        this.emf = Persistence.createEntityManagerFactory("User_persi_unit");
+        this.emf = Persistence.createEntityManagerFactory("pos_pu");
         this.entityManager = emf.createEntityManager();
     }
 
