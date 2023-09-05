@@ -1,7 +1,7 @@
-package repository;
+package org.pos.repository;
 
 import jakarta.persistence.*;
-import model.User;
+import org.pos.model.User;
 
 public class UserRepository implements IUserRepository{
     EntityManagerFactory factory;

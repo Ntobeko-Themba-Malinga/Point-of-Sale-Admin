@@ -1,6 +1,6 @@
-package repository;
+package org.pos.repository;
 
-import model.Item;
+import org.pos.model.Item;
 
 public interface IItemRepository {
 

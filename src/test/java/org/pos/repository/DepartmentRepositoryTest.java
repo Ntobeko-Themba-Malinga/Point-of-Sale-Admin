@@ -1,10 +1,10 @@
-package repository;
+package org.pos.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import model.Department;
-import model.Item;
+import org.pos.model.Department;
+import org.pos.model.Item;
 import org.junit.jupiter.api.*;
 
 import java.util.HashSet;

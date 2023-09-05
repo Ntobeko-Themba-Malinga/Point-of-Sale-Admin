@@ -1,7 +1,7 @@
-package repository;
+package org.pos.repository;
 
-import model.Department;
-import model.Item;
+import org.pos.model.Department;
+import org.pos.model.Item;
 
 import java.util.List;
 

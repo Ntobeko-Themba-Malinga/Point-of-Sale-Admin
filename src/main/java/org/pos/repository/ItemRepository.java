@@ -1,9 +1,9 @@
-package repository;
+package org.pos.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import model.Item;
+import org.pos.model.Item;
 
 public class ItemRepository implements IItemRepository {
     private final EntityManagerFactory entityManagerFactory;

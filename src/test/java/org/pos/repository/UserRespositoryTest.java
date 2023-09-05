@@ -1,12 +1,10 @@
-package repository;
+package org.pos.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import model.User;
+import org.pos.model.User;
 import org.junit.jupiter.api.*;
-import repository.IUserRepository;
-import repository.UserRepository;
 
 
 import static org.junit.jupiter.api.Assertions.*;
