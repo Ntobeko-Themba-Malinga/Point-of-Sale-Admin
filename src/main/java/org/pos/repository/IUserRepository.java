@@ -1,6 +1,6 @@
-package repository;
+package org.pos.repository;
 
-import model.User;
+import org.pos.model.User;
 
 public interface IUserRepository {
 

@@ -1,4 +1,4 @@
-package model;
+package org.pos.model;
 
 import jakarta.persistence.*;
 
