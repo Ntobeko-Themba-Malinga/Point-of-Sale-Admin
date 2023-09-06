@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.pos.controller.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pos.controller.AdminController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="461.0" layoutX="109.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="905.0" />
+      <Label layoutX="508.0" layoutY="14.0" text="ADMIN">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorLabel" layoutX="109.0" layoutY="69.0" prefHeight="24.0" prefWidth="905.0" textFill="#ff2020">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username" layoutX="134.0" layoutY="139.0" prefHeight="53.0" prefWidth="855.0" promptText="USERNAME...">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
+      <Button layoutX="499.0" layoutY="374.0" mnemonicParsing="false" onAction="#login" prefHeight="61.0" prefWidth="127.0" text="LOGIN">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="password" layoutX="134.0" layoutY="236.0" prefHeight="53.0" prefWidth="855.0" promptText="PASSWORD...">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </PasswordField>
+   </children>
 </AnchorPane>

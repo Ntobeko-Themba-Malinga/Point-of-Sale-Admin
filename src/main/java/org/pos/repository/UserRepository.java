@@ -26,8 +26,12 @@ public class UserRepository implements IUserRepository{
         manager.getTransaction().begin();
         Query query = manager.createQuery(
                 "SELECT s FROM User s WHERE s.username = '"+username+"' AND s.password = '" + password + "'");
-        User user = (User) query.getSingleResult();
-        return user;
+        try {
+            return  (User) query.getSingleResult();
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
