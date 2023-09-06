@@ -9,9 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.pos.model.User;
 import org.pos.repository.IUserRepository;
@@ -62,22 +59,12 @@ public class AdminController {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
         try {
-//            Parent root_ = FXMLLoader.load(getClass().getResource("Home.fxml"));
-
-            //Used for testing
-            Pane root = new Pane(); //
-
-            Text text = new Text(); //
-            text.setFill(Color.BLACK); //
-            text.setText("THis is the home scene"); //
-            text.setX(100); //
-            text.setY(100); //
-            root.getChildren().add(text); //
+            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
