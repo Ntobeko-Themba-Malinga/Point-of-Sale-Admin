@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="612.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pos.controller.ItemsController">
    <children>
       <Label fx:id="departmentLabel" layoutX="475.0" layoutY="14.0" text="Label">
@@ -48,12 +47,12 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button layoutX="724.0" layoutY="354.0" mnemonicParsing="false" onAction="#update" prefHeight="45.0" prefWidth="134.0" text="UPDATE">
+      <Button fx:id="updateButton" layoutX="724.0" layoutY="354.0" mnemonicParsing="false" onAction="#update" prefHeight="45.0" prefWidth="134.0" text="UPDATE">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="724.0" layoutY="415.0" mnemonicParsing="false" onAction="#create" prefHeight="45.0" prefWidth="134.0" text="ADD">
+      <Button fx:id="addButton" layoutX="724.0" layoutY="415.0" mnemonicParsing="false" onAction="#create" prefHeight="45.0" prefWidth="134.0" text="ADD">
          <font>
             <Font size="21.0" />
          </font>
