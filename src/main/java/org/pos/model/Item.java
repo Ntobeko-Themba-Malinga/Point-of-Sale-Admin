@@ -60,6 +60,12 @@ public class Item {
 
     @Override
     public String toString() {
-        return this.name +", QTY: " + this.quantity + ", UNIT: R" + this.price + ", TOTAL: R" + this.quantity * this.price;
+        return String.format(
+                "%s, QTY: %d, UNIT: R%.2f, TOTAL: R%.2f",
+                this.name,
+                this.quantity,
+                this.price,
+                this.quantity * this.price
+        );
     }
 }

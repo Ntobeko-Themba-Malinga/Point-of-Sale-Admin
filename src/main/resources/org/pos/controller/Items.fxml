@@ -52,7 +52,12 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <Button fx:id="addButton" layoutX="724.0" layoutY="415.0" mnemonicParsing="false" onAction="#create" prefHeight="45.0" prefWidth="134.0" text="ADD">
+      <Button fx:id="deleteButton" layoutX="724.0" layoutY="415.0" mnemonicParsing="false" onAction="#delete" prefHeight="45.0" prefWidth="134.0" text="DELETE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="addButton" layoutX="724.0" layoutY="483.0" mnemonicParsing="false" onAction="#create" prefHeight="45.0" prefWidth="134.0" text="ADD">
          <font>
             <Font size="21.0" />
          </font>

@@ -1,13 +1,8 @@
 package org.pos.controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.pos.model.Department;
 import org.pos.model.Item;
 import org.pos.repository.ItemRepository;
@@ -30,6 +25,8 @@ public class ItemsController implements Initializable {
     private Button updateButton;
     @FXML
     private Button addButton;
+    @FXML
+    private Button deleteButton;
 
     private Department department;
     private Item selectedItem;
@@ -39,6 +36,46 @@ public class ItemsController implements Initializable {
         this.itemRepo = new ItemRepository();
     }
 
+    /**
+     * Changes the state of buttons between enabled and disabled.
+     * @param updateButton if true the update button is disabled else it is enabled.
+     * @param addButton if true the add button is disabled else it is enabled.
+     * @param deleteButton if true the delete button is disabled else it is enabled.
+     */
+    private void updateButtonState(boolean updateButton, boolean addButton, boolean deleteButton) {
+        this.updateButton.setDisable(updateButton);
+        this.addButton.setDisable(addButton);
+        this.deleteButton.setDisable(deleteButton);
+    }
+
+    /**
+     * Update the text fields content
+     * if no item is selected the text field are set to empty
+     */
+    private void updateFields() {
+        if (selectedItem != null) {
+            this.name.setText(selectedItem.getName());
+            this.qty.setText("" + selectedItem.getQuantity());
+            this.price.setText("" + selectedItem.getPrice());
+        } else {
+            this.name.setText("");
+            this.qty.setText("");
+            this.price.setText("");
+        }
+    }
+
+    /**
+     * Updates the ListView of items to show changes that have been made.
+     */
+    private void updateListViewItems() {
+        items.getItems().clear();
+        items.getItems().addAll(this.department.getItems());
+    }
+
+    /**
+     * Called when the add button is clicked.
+     * Adds an item to the database.
+     */
     public void create() {
         try {
             String itemName = name.getText();
@@ -59,6 +96,10 @@ public class ItemsController implements Initializable {
         }
     }
 
+    /**
+     * Called when the update button is clicked.
+     * Updates an item on the database.
+     */
     public void update() {
         try {
             String itemName = name.getText();
@@ -70,22 +111,37 @@ public class ItemsController implements Initializable {
             selectedItem.setPrice(itemPrice);
 
             this.itemRepo.updateItem(selectedItem);
-            items.getItems().clear();
-            items.getItems().addAll(this.department.getItems());
+            this.updateListViewItems();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Something went wrong!");
         }
         this.selectedItem = null;
-        this.updateButton.setDisable(true);
-        this.addButton.setDisable(false);
-        name.setText("");
-        qty.setText("");
-        price.setText("");
+        this.updateButtonState(true, false, true);
+        this.updateFields();
     }
 
+    /**
+     * Called when the delete button is clicked.
+     * deletes an item from the database.
+     */
     public void delete() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete item?");
+        alert.setContentText("Are you sure you want to delete '" + selectedItem + "'?");
 
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            try {
+                this.itemRepo.deleteItem(selectedItem);
+                this.department.getItems().remove(selectedItem);
+                this.updateListViewItems();
+            } catch (Exception e) {
+                System.out.println("Something went wrong!");
+            }
+            this.selectedItem = null;
+            this.updateButtonState(true, false, true);
+            updateFields();
+        }
     }
 
     public void setDepartment(Department department) {
@@ -96,17 +152,11 @@ public class ItemsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.updateButton.setDisable(true);
-        this.items.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
-            @Override
-            public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
-                selectedItem = items.getSelectionModel().getSelectedItem();
-                updateButton.setDisable(false);
-                addButton.setDisable(true);
-                name.setText(selectedItem.getName());
-                qty.setText("" + selectedItem.getQuantity());
-                price.setText("" + selectedItem.getPrice());
-            }
+        this.updateButtonState(true, false, true);
+        this.items.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedItem = items.getSelectionModel().getSelectedItem();
+            this.updateButtonState(false, true, false);
+            updateFields();
         });
     }
 }
