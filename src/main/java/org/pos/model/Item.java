@@ -57,4 +57,15 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s, QTY: %d, UNIT: R%.2f, TOTAL: R%.2f",
+                this.name,
+                this.quantity,
+                this.price,
+                this.quantity * this.price
+        );
+    }
 }
