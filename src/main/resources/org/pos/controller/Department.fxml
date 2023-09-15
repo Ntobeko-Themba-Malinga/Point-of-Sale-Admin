@@ -18,7 +18,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="departmentName" layoutX="268.0" layoutY="141.0" prefHeight="26.0" prefWidth="221.0" promptText="Department Name" />
+      <TextField fx:id="departmentName" layoutX="285.0" layoutY="133.0" prefHeight="33.0" prefWidth="221.0" promptText="Department Name" />
       <Button fx:id="addButton" layoutX="359.0" layoutY="286.0" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="73.0" text="ADD" />
       <Button fx:id="updateButton" layoutX="359.0" layoutY="202.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="73.0" text="UPDATE" />
       <Button fx:id="deleteButton" layoutX="359.0" layoutY="244.0" mnemonicParsing="false" onAction="#deleteDepartment" prefHeight="26.0" prefWidth="73.0" text="DELETE" />
