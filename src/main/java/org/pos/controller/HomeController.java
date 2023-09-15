@@ -12,12 +12,10 @@ import javafx.stage.Stage;
 
 public class HomeController {
 
-
     public void cashiers(ActionEvent event){
         System.out.println("Loads cash scene");
 
     }
-
 
     public void sales(ActionEvent event){
         System.out.println("Loads sales scene");
@@ -35,9 +33,4 @@ public class HomeController {
             e.printStackTrace();
         }
     };
-
-
-
-
-
 }
