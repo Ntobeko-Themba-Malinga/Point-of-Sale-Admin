@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.pos.controller.DepartmentController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pos.controller.DepartmentController">
+   <children>
+      <ListView fx:id="departmentsList" layoutX="6.0" layoutY="83.0" prefHeight="310.0" prefWidth="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3b6b9" height="262.0" layoutX="219.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="363.0" />
+      <Label fx:id="departmentLabel" layoutX="299.0" layoutY="24.0" prefHeight="43.0" prefWidth="193.0" text="DEPARTMENTS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="departmentName" layoutX="268.0" layoutY="141.0" prefHeight="26.0" prefWidth="221.0" promptText="Department Name" />
+      <Button fx:id="addButton" layoutX="359.0" layoutY="286.0" mnemonicParsing="false" onAction="#create" prefHeight="26.0" prefWidth="73.0" text="ADD" />
+      <Button fx:id="updateButton" layoutX="359.0" layoutY="202.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="73.0" text="UPDATE" />
+      <Button fx:id="deleteButton" layoutX="359.0" layoutY="244.0" mnemonicParsing="false" onAction="#deleteDepartment" prefHeight="26.0" prefWidth="73.0" text="DELETE" />
+   </children>
 </AnchorPane>
