@@ -25,7 +25,7 @@ public class HomeController {
 
     public void department(ActionEvent event){
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Department.fxml"));
             Scene scene = new Scene(root);
